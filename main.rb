@@ -46,6 +46,22 @@ class LinkedList
     end
     count 
   end 
+
+  def head 
+    cur = @head
+    1.times do
+      cur = cur.next_node
+    end
+    cur
+  end
+
+  def tail
+    cur = @head
+    while cur.next_node != nil
+      cur = cur.next_node
+    end
+    cur
+  end
 end
 
 
@@ -67,6 +83,8 @@ p list
 p list.size
 list.append(5)
 p list.size
+p list.head
+p list.tail
 
 
 
