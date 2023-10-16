@@ -36,6 +36,16 @@ class LinkedList
       end
     end
   end
+
+  def size
+    cur = @head
+    count = 0
+    while cur.next_node != nil
+      cur = cur.next_node
+      count += 1
+    end
+    count 
+  end 
 end
 
 
@@ -54,6 +64,10 @@ list.prepend("new start")
 p list
 list.prepend("first one")
 p list 
+p list.size
+list.append(5)
+p list.size
+
 
 
 
