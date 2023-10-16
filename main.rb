@@ -81,7 +81,6 @@ class LinkedList
 
   def contains?(value)
     cur = @head
-    contain = 0
     while cur.next_node != nil
       cur = cur.next_node
       if value == cur.value
@@ -90,6 +89,21 @@ class LinkedList
       end
     end
     return false
+  end
+
+  def find(value)
+    cur = @head
+    index = 0 
+    while cur.next_node != nil
+      cur = cur.next_node
+      if value == cur.value
+        return index
+        break
+      else
+        index += 1
+      end 
+    end
+    return nil
   end
 
 
@@ -121,11 +135,14 @@ p list.at(3)
 p list.at(7)
 p list.at(8)
 p list.contains?(3)
+p list.find(3)
 list.pop
 p list
 list.pop
 p list
 p list.contains?(3)
+p list.find(3)
+p list.find("start")
 
 
 
