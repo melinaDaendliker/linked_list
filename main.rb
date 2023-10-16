@@ -18,8 +18,8 @@ p list.to_s
 p list.size
 list.append(5)
 p list.size
-#p list.head
-#p list.tail
+p list.head
+p list.tail
 p list.at(3)
 p list.at(7)
 p list.at(8)
@@ -32,7 +32,7 @@ list.pop
 p list.to_s
 p list.contains?(3)
 p list.find(3)
-p list.find("test6")
+p list.find("test4")
 p list.to_s
 list.insert_at("test7", 2)
 p list.to_s

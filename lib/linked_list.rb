@@ -1,74 +1,67 @@
+# frozen_string_literal: true
+
 class LinkedList
+  attr_accessor :head_node
 
-  attr_accessor :head
-
-  def initialize(head = nil)
-    @head = Node.new
+  def initialize(_head = nil)
+    @head_node = Node.new
   end
-  
+
   def append(value)
     end_node = Node.new(value)
-    cur = @head
-    while cur.next_node != nil
-      cur = cur.next_node
-    end
+    cur = @head_node
+    cur = cur.next_node until cur.next_node.nil?
     cur.next_node = end_node
   end
 
   def prepend(value)
-    cur = @head
-    1.times do
-      cur = cur.next_node
-      if cur == nil
-        append(value)
-      else
-        start_node = Node.new(value)
-        start_node.next_node = cur
-        @head.next_node = start_node
-      end
+    cur = @head_node
+
+    cur = cur.next_node
+    if cur.nil?
+      append(value)
+    else
+      start_node = Node.new(value)
+      start_node.next_node = cur
+      @head_node.next_node = start_node
     end
   end
 
   def size
-    cur = @head
+    cur = @head_node
     count = 0
-    while cur.next_node != nil
+    until cur.next_node.nil?
       cur = cur.next_node
       count += 1
     end
-    count 
-  end 
+    count
+  end
 
-  def head 
-    cur = @head
-    1.times do
-      cur = cur.next_node
-    end
-    cur
+  def head
+    cur = @head_node
+    cur.next_node
   end
 
   def tail
-    cur = @head
-    while cur.next_node != nil
-      cur = cur.next_node
-    end
+    cur = @head_node
+    cur = cur.next_node until cur.next_node.nil?
     cur
   end
 
   def at(index)
-    cur = @head
+    cur = @head_node
     index.times do
       cur = cur.next_node
     end
-    if cur == nil
-       "There is no node with this index"
+    if cur.nil?
+      'There is no node with this index'
     else
       cur
-    end 
-  end 
+    end
+  end
 
   def pop
-    cur = @head
+    cur = @head_node
     len = size
     len -= 1
     len.times do
@@ -78,49 +71,42 @@ class LinkedList
   end
 
   def contains?(value)
-    cur = @head
-    while cur.next_node != nil
+    cur = @head_node
+    until cur.next_node.nil?
       cur = cur.next_node
-      if value == cur.value
-        return true
-        break
-      end
+      return true if value == cur.value
     end
-    return false
+    false
   end
 
   def find(value)
-    cur = @head
-    index = 0 
-    while cur.next_node != nil
+    cur = @head_node
+    index = 0
+    until cur.next_node.nil?
       cur = cur.next_node
-      if value == cur.value
-        return index
-        break
-      else
-        index += 1
-      end 
+      return index if value == cur.value
+      index += 1
     end
-    return nil
+    nil
   end
 
   def to_s
-    cur = @head
-    str = ""
-    while cur.next_node != nil
+    cur = @head_node
+    str = ''
+    until cur.next_node.nil?
       cur = cur.next_node
       str += "( #{cur.value} ) -> "
     end
-    str += "nil"
+    str += 'nil'
     str
   end
 
   def insert_at(value, index)
-    cur = @head
+    cur = @head_node
     count = 0
-    while cur.next_node != nil
+    until cur.next_node.nil?
       cur = cur.next_node
-      if count == index -1
+      if count == index - 1
         before = cur
       elsif count == index
         after = cur
@@ -130,20 +116,20 @@ class LinkedList
     new_node = Node.new(value)
     new_node.next_node = after
     before.next_node = new_node
-  end 
+  end
 
   def remove_at(index)
-    cur = @head
+    cur = @head_node
     count = 0
-    while cur.next_node != nil
+    until cur.next_node.nil?
       cur = cur.next_node
-      if count == index -1
+      if count == index - 1
         before = cur
       elsif count == index + 1
         after = cur
       end
       count += 1
-    end 
+    end
     before.next_node = after
-  end 
+  end
 end
