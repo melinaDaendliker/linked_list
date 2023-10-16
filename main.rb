@@ -62,6 +62,21 @@ class LinkedList
     end
     cur
   end
+
+  def at(index)
+    cur = @head
+    index.times do
+      cur = cur.next_node
+    end
+    if cur == nil
+       "There is no node with this index"
+    else
+      cur
+    end 
+  end 
+
+  
+
 end
 
 
@@ -83,8 +98,11 @@ p list
 p list.size
 list.append(5)
 p list.size
-p list.head
-p list.tail
+#p list.head
+#p list.tail
+p list.at(3)
+p list.at(7)
+p list.at(8)
 
 
 
