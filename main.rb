@@ -13,8 +13,6 @@ class LinkedList
     cur = @head
     while cur.next_node != nil
       cur = cur.next_node
-      #p cur.value
-      #p cur.next_node
     end
     cur.next_node = end_node
   end
@@ -23,15 +21,11 @@ class LinkedList
     cur = @head
     1.times do
       cur = cur.next_node
-      #p cur
       if cur == nil
         append(value)
       else
-        #p cur.value
-        #p cur.next_node
         start_node = Node.new(value)
         start_node.next_node = cur
-        #p start_node
         @head.next_node = start_node
       end
     end
@@ -75,7 +69,17 @@ class LinkedList
     end 
   end 
 
-  
+  def pop
+    cur = @head
+    len = size
+    len -= 1
+    len.times do
+      cur = cur.next_node
+    end
+    cur.next_node = nil
+  end
+
+
 
 end
 
@@ -103,6 +107,10 @@ p list.size
 p list.at(3)
 p list.at(7)
 p list.at(8)
+list.pop
+p list
+list.pop
+p list
 
 
 
