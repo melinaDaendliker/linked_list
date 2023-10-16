@@ -79,6 +79,19 @@ class LinkedList
     cur.next_node = nil
   end
 
+  def contains?(value)
+    cur = @head
+    contain = 0
+    while cur.next_node != nil
+      cur = cur.next_node
+      if value == cur.value
+        return true
+        break
+      end
+    end
+    return false
+  end
+
 
 
 end
@@ -107,10 +120,13 @@ p list.size
 p list.at(3)
 p list.at(7)
 p list.at(8)
+p list.contains?(3)
 list.pop
 p list
 list.pop
 p list
+p list.contains?(3)
+
 
 
 
