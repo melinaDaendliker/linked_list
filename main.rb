@@ -106,6 +106,17 @@ class LinkedList
     return nil
   end
 
+  def to_s
+    cur = @head
+    str = ""
+    while cur.next_node != nil
+      cur = cur.next_node
+      str += "( #{cur.value} ) -> "
+    end
+    str += "nil"
+    str
+  end
+
 
 
 end
@@ -136,6 +147,7 @@ p list.at(7)
 p list.at(8)
 p list.contains?(3)
 p list.find(3)
+p list.to_s
 list.pop
 p list
 list.pop
@@ -143,6 +155,7 @@ p list
 p list.contains?(3)
 p list.find(3)
 p list.find("start")
+p list.to_s
 
 
 
