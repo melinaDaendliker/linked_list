@@ -117,6 +117,24 @@ class LinkedList
     str
   end
 
+  def insert_at(value, index)
+    cur = @head
+    count = 0
+    before_index = index -1 
+    while cur.next_node != nil
+      cur = cur.next_node
+      if count == before_index
+        before = cur
+      elsif count == index
+        after = cur
+      end
+      count += 1
+    end
+    new_node = Node.new(value)
+    new_node.next_node = after
+    before.next_node = new_node
+  end 
+
 
 
 end
@@ -156,7 +174,12 @@ p list.contains?(3)
 p list.find(3)
 p list.find("start")
 p list.to_s
-
+list.insert_at("party", 2)
+p list.to_s
+list.insert_at("groot", 1)
+p list.to_s
+list.insert_at("thor", 5)
+p list.to_s
 
 
 
